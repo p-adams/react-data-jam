@@ -10,7 +10,7 @@ React Data Jam is a versatile data table component designed for displaying tabul
 - Row Selection: Select individual rows or multiple rows for further actions.
 - Customizable Column Rendering: Customize the appearance and behavior of columns to suit your needs.
 
-### Installation
+### Installation (WIP)
 
 To install React Data Jam in your React project, you can use npm or yarn:
 
@@ -50,7 +50,7 @@ Prop Type Description:
 
 Examples
 
-For more usage examples and customization options, refer to the examples directory.
+For more usage examples and customization options, refer to the [examples directory](https://github.com/p-adams/react-data-jam/tree/main/src/examples).
 
 ###License
 
