@@ -1,30 +1,57 @@
-# React + TypeScript + Vite
+# React Data Jam
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React Data Jam is a versatile data table component designed for displaying tabular data in React applications. It provides a rich set of features including sorting, filtering, pagination, row selection, and customizable column rendering.
 
-Currently, two official plugins are available:
+### Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Sorting: Easily sort columns in ascending or descending order.
+- Filtering: Filter rows based on custom criteria to focus on relevant data.
+- Pagination: Navigate through large datasets with built-in pagination controls.
+- Row Selection: Select individual rows or multiple rows for further actions.
+- Customizable Column Rendering: Customize the appearance and behavior of columns to suit your needs.
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To install React Data Jam in your React project, you can use npm or yarn:
 
-- Configure the top-level `parserOptions` property like this:
+`npm install react-data-jam`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+or
+
+`yarn add react-data-jam`
+
+### Usage
+
+```
+import React from 'react';
+import DataJam from 'react-data-jam';
+
+const MyComponent = () => {
+  // Your tabular data array
+  const data = [/* Your data here */];
+
+  return (
+    <div>
+      <h1>My Data Jam</h1>
+      <DataJam data={data} />
+    </div>
+  );
+};
+
+export default MyComponent;
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Props (WIP)
+
+Prop Type Description:
+
+`data` : Tabular data array to be displayed
+`[options]`: Customization options (optional)
+
+Examples
+
+For more usage examples and customization options, refer to the examples directory.
+
+###License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
