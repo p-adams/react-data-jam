@@ -2,3 +2,14 @@
   /* Override the default grid template columns */
   --datajam-table-columns: repeat(3, 1fr);
 }
+
+.data-header {
+  outline: 1px solid;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.data-cell {
+  outline: 1px solid;
+  padding: 10px;
+}

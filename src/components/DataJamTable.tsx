@@ -27,11 +27,13 @@ function DataJamTable(props: DataJamProps) {
       }}
     >
       {props.columnHeaders && (
-        <div className="column-headers">
+        <>
           {props.columnHeaders.map((header, index) => (
-            <div key={index}>{header}</div>
+            <div key={index} className="data-header">
+              {header}
+            </div>
           ))}
-        </div>
+        </>
       )}
       {columns.map((col) =>
         rows.map((row) => (

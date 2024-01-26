@@ -13,6 +13,7 @@ function App() {
             [4, 5, 6],
             [7, 8, 9],
           ]}
+          columnHeaders={["A", "B", "C"]}
         />
       </div>
       <p className="read-the-docs">
