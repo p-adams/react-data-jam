@@ -1,7 +1,9 @@
 import { useMemo } from "react";
 import "./index.css";
+
 interface DataJamProps {
   data: any[][]; // Adjust the type as per your data structure
+  columnHeaders?: string[];
 }
 
 function DataJamTable(props: DataJamProps) {
@@ -24,6 +26,13 @@ function DataJamTable(props: DataJamProps) {
         gridTemplateColumns: `var(--datajam-table-columns, ${defaultGridTemplateColumns})`,
       }}
     >
+      {props.columnHeaders && (
+        <div className="column-headers">
+          {props.columnHeaders.map((header, index) => (
+            <div key={index}>{header}</div>
+          ))}
+        </div>
+      )}
       {columns.map((col) =>
         rows.map((row) => (
           <div key={`${row}-${col}`} className="data-cell">
