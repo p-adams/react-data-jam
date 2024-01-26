@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-
+import { useMemo } from "react";
+import "./index.css";
 interface DataJamProps {
   data: any[][]; // Adjust the type as per your data structure
 }
@@ -15,18 +15,20 @@ function DataJamTable(props: DataJamProps) {
       Array.from({ length: numRows }, (_, index) => index),
     ];
   }, [data]);
-
+  const defaultGridTemplateColumns = `repeat(${columns.length}, 1fr)`;
   return (
     <div
       className="datajam-table-wrapper"
       style={{
         display: "grid",
-        gridTemplateColumns: `repeat(${columns.length}, 1fr)`,
+        gridTemplateColumns: `var(--datajam-table-columns, ${defaultGridTemplateColumns})`,
       }}
     >
       {columns.map((col) =>
         rows.map((row) => (
-          <div key={`${row}-${col}`}>{props.data[row][col]}</div>
+          <div key={`${row}-${col}`} className="data-cell">
+            {props.data[row][col]}
+          </div>
         ))
       )}
     </div>
