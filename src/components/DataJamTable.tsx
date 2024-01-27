@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import "./index.css";
 
-interface DataJamProps {
+export interface DataJamProps {
   data: any[][]; // Adjust the type as per your data structure
   columnHeaders?: string[];
 }
