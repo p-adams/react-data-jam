@@ -7,11 +7,15 @@ function App() {
       <div></div>
       <h1>React DataJam Demo</h1>
       <div className="card">
-        <section>
+        <section className="demo-section-wrapper">
           <h1>Basic Tables</h1>
-          <section>
+          <section className="demo-section">
             <h3>Simple 3 x 3 Table</h3>
             <BasicTable />
+          </section>
+          <section className="demo-section">
+            <h3>Simple 3 x 3 Table W/Column Labels</h3>
+            <BasicTable columnHeaders={["A", "B", "C"]} />
           </section>
         </section>
       </div>

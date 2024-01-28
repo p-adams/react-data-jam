@@ -1,5 +1,5 @@
 import DataJamTable from "../components/DataJamTable";
-
+import "./BasicTable.css";
 interface BasicTableProps {
   data?: any[][];
   columnHeaders?: string[];
@@ -14,7 +14,11 @@ function BasicTable(props: BasicTableProps) {
     ],
     columnHeaders = [],
   } = props;
-  return <DataJamTable data={data} columnHeaders={columnHeaders} />;
+  return (
+    <div className="basic-table-wrapper">
+      <DataJamTable data={data} columnHeaders={columnHeaders} />
+    </div>
+  );
 }
 
 export default BasicTable;
