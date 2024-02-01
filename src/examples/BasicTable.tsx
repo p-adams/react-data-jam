@@ -1,8 +1,9 @@
 import DataJamTable from "../components/DataJamTable";
 import "./BasicTable.css";
+
 interface BasicTableProps {
   data?: any[][];
-  columnHeaders?: string[];
+  columnHeaders?: { label: string; sortable?: boolean }[];
 }
 
 function BasicTable(props: BasicTableProps) {

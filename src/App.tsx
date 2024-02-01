@@ -15,7 +15,9 @@ function App() {
           </section>
           <section className="demo-section">
             <h3>Simple 3 x 3 Table W/Column Labels</h3>
-            <BasicTable columnHeaders={["A", "B", "C"]} />
+            <BasicTable
+              columnHeaders={[{ label: "A" }, { label: "B" }, { label: "C" }]}
+            />
           </section>
         </section>
       </div>

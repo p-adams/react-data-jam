@@ -3,7 +3,7 @@ import "./index.css";
 
 export interface DataJamProps {
   data: any[][]; // Adjust the type as per your data structure
-  columnHeaders?: string[];
+  columnHeaders?: { label: string; sortable?: boolean }[];
 }
 
 function DataJamTable(props: DataJamProps) {
@@ -30,7 +30,10 @@ function DataJamTable(props: DataJamProps) {
         <>
           {props.columnHeaders.map((header, index) => (
             <div key={index} className="data-header">
-              {header}
+              <div>{header.label}</div>
+              {header.sortable && (
+                <div>sort {/* TODO: replace with icon*/}</div>
+              )}
             </div>
           ))}
         </>
