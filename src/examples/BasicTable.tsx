@@ -1,4 +1,4 @@
-import DataJamTable from "../components/DataJamTable";
+import DataJamTable from "../components/tables/DataJamTable";
 import "./BasicTable.css";
 
 interface BasicTableProps {

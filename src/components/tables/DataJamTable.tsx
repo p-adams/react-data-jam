@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import "./index.css";
+import "./DataJamTable.css";
 
 export interface DataJamProps {
   data: any[][]; // Adjust the type as per your data structure
