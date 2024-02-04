@@ -1,5 +1,6 @@
 import "./App.css";
 import BasicTable from "./examples/BasicTable";
+import BasicTableSearch from "./examples/BasicTableSearch";
 
 function App() {
   return (
@@ -16,6 +17,12 @@ function App() {
           <section className="demo-section">
             <h3>Simple 3 x 3 Table W/Column Labels</h3>
             <BasicTable
+              columnHeaders={[{ label: "A" }, { label: "B" }, { label: "C" }]}
+            />
+          </section>
+          <section className="demo-section">
+            <h3>Simple 3 x 3 Table W/Search </h3>
+            <BasicTableSearch
               columnHeaders={[{ label: "A" }, { label: "B" }, { label: "C" }]}
             />
           </section>
