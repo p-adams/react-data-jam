@@ -1,13 +1,7 @@
 import DataJamTable from "../components/tables/DataJamTable";
 import "./BasicTable.css";
 
-interface BasicTableProps {
-  data?: any[][];
-  actions?: { searchBy?: string; sortBy?: "ASC" | "DESC"; filterBy?: string };
-  columnHeaders?: { label: string; sortable?: boolean }[];
-}
-
-function BasicTable(props: BasicTableProps) {
+function BasicTable(props: DataJamTableProps) {
   const {
     actions,
     data = [
