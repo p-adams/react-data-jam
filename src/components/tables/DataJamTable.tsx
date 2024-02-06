@@ -3,10 +3,12 @@ import "./DataJamTable.css";
 
 export interface DataJamProps {
   data: any[][]; // Adjust the type as per your data structure
+  actions?: { searchBy?: string; sortBy?: "ASC" | "DESC"; filterBy: string };
   columnHeaders?: { label: string; sortable?: boolean }[];
 }
 
 function DataJamTable(props: DataJamProps) {
+  // TODO: APPLY ACTIONS TO DATA
   const { data } = props;
 
   const [columns, rows] = useMemo(() => {

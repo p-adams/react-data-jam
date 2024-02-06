@@ -8,7 +8,6 @@ interface BasicTableProps {
 }
 
 function BasicTable(props: BasicTableProps) {
-  // TODO: APPLY ACTIONS TO DATA
   const {
     data = [
       [1, 2, 3],
