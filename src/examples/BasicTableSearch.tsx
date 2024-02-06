@@ -18,7 +18,7 @@ function BasicTableSearch(props: BasicTableSearchProps) {
           onSearch: (e) => onSearch(e.target.value),
         }}
       />
-      <BasicTable />
+      <BasicTable actions={{ searchBy: searchValue }} />
     </>
   );
 }

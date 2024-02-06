@@ -3,12 +3,13 @@ import "./BasicTable.css";
 
 interface BasicTableProps {
   data?: any[][];
-  actions?: { searchBy?: string; sortBy?: "ASC" | "DESC"; filterBy: string };
+  actions?: { searchBy?: string; sortBy?: "ASC" | "DESC"; filterBy?: string };
   columnHeaders?: { label: string; sortable?: boolean }[];
 }
 
 function BasicTable(props: BasicTableProps) {
   const {
+    actions,
     data = [
       [1, 2, 3],
       [4, 5, 6],
@@ -18,7 +19,11 @@ function BasicTable(props: BasicTableProps) {
   } = props;
   return (
     <div className="basic-table-wrapper">
-      <DataJamTable data={data} columnHeaders={columnHeaders} />
+      <DataJamTable
+        data={data}
+        columnHeaders={columnHeaders}
+        actions={actions}
+      />
     </div>
   );
 }
