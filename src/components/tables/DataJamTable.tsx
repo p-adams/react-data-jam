@@ -9,21 +9,15 @@ function DataJamTable(props: DataJamTableProps) {
   }
   const search = useMemo<TableData[]>(() => {
     if (!actions?.searchBy) {
-      return [];
+      return data;
     }
-    return data.reduce<TableData[]>((acc, $tdata) => {
-      const filteredData = $tdata.filter(($d) => {
-        let $str = $d;
-        if (typeof $d === "number") {
-          $str = $d.toString();
-        }
-        return $str.includes(actions.searchBy);
+    return data.filter((row) => {
+      return row.some((cell) => {
+        // Convert cell to string if it's not already
+        const cellString = cell.toString();
+        return cellString.includes(actions.searchBy);
       });
-      if (filteredData.length > 0) {
-        acc.push(filteredData);
-      }
-      return acc;
-    }, []);
+    });
   }, [actions?.searchBy]);
 
   const [columns, rows] = useMemo(() => {
@@ -34,7 +28,7 @@ function DataJamTable(props: DataJamTableProps) {
       Array.from({ length: numRows }, (_, index) => index),
     ];
   }, [data]);
-  const defaultGridTemplateColumns = `repeat(${columns.length}, 1fr)`;
+  const defaultGridTemplateColumns = `repeat(${search.length}, 1fr)`;
   return (
     <div
       className="datajam-table-wrapper"
@@ -55,12 +49,16 @@ function DataJamTable(props: DataJamTableProps) {
           ))}
         </>
       )}
-      {columns.map((col) =>
-        rows.map((row) => (
-          <div key={`${row}-${col}`} className="data-cell">
-            {props.data?.[row]?.[col]}
-          </div>
-        ))
+      {search.length ? (
+        rows.map((row) =>
+          columns.map((col) => (
+            <div key={`${row}-${col}`} className="data-cell">
+              {search?.[row]?.[col] && <div>{search?.[row]?.[col]}</div>}
+            </div>
+          ))
+        )
+      ) : (
+        <div>Not found</div>
       )}
     </div>
   );

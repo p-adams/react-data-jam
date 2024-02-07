@@ -11,5 +11,8 @@
 
 .data-cell {
   outline: 1px solid;
+}
+
+.data-cell > div {
   padding: 10px;
 }
