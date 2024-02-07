@@ -3,10 +3,29 @@ import "./DataJamTable.css";
 
 function DataJamTable(props: DataJamTableProps) {
   // TODO: APPLY ACTIONS TO DATA
-  const { data } = props;
+  const { actions, data } = props;
   if (!data) {
     return null;
   }
+  const search = useMemo<TableData[]>(() => {
+    if (!actions?.searchBy) {
+      return [];
+    }
+    return data.reduce<TableData[]>((acc, $tdata) => {
+      const filteredData = $tdata.filter(($d) => {
+        let $str = $d;
+        if (typeof $d === "number") {
+          $str = $d.toString();
+        }
+        return $str.includes(actions.searchBy);
+      });
+      if (filteredData.length > 0) {
+        acc.push(filteredData);
+      }
+      return acc;
+    }, []);
+  }, [actions?.searchBy]);
+
   const [columns, rows] = useMemo(() => {
     const numColumns = data.length > 0 ? data[0].length : 0;
     const numRows = data.length;
