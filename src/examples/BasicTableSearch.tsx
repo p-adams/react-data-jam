@@ -20,8 +20,8 @@ function BasicTableSearch(_props: DataJamTableProps) {
         }}
       />
       <BasicTable
+        columnHeaders={[{ label: "A" }, { label: "B" }, { label: "C" }]}
         actions={{ searchBy: searchValue, sortBy: sortBy }}
-        onToggleSort={(header) => handleToggleSort(header)}
       />
     </>
   );

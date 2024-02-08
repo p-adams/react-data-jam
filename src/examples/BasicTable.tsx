@@ -17,7 +17,7 @@ function BasicTable(props: DataJamTableProps) {
         data={data}
         columnHeaders={columnHeaders}
         actions={actions}
-        onToggleSort={(header) => props.onToggleSort?.(header)}
+        onToggleSort={props.onToggleSort}
       />
     </div>
   );
