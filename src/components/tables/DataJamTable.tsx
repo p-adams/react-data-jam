@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import "./DataJamTable.css";
 
 function DataJamTable(props: DataJamTableProps) {
@@ -7,6 +7,7 @@ function DataJamTable(props: DataJamTableProps) {
   if (!data) {
     return null;
   }
+  const [sortBy, setSortBy] = useState<SortDir>("ASC");
   const search = useMemo<TableData[]>(() => {
     if (!actions?.searchBy) {
       return data;
@@ -28,10 +29,18 @@ function DataJamTable(props: DataJamTableProps) {
       Array.from({ length: numRows }, (_, index) => index),
     ];
   }, [data]);
-  const defaultGridTemplateColumns = `repeat(${search.length}, 1fr)`;
+
   function toggleSort(header: ColumnHeader) {
-    props.onToggleSort?.(header);
+    if (props.onToggleSort) {
+      props.onToggleSort?.(header);
+      return;
+    }
+    // TODO: sort internally
+    const sortDir = sortBy === "ASC" ? "DESC" : "ASC";
+    setSortBy(sortDir);
   }
+
+  const defaultGridTemplateColumns = `repeat(${search.length}, 1fr)`;
   return (
     <div
       className="datajam-table-wrapper"
