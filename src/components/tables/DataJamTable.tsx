@@ -29,6 +29,9 @@ function DataJamTable(props: DataJamTableProps) {
     ];
   }, [data]);
   const defaultGridTemplateColumns = `repeat(${search.length}, 1fr)`;
+  function toggleSort(header: ColumnHeader) {
+    props.onToggleSort?.(header);
+  }
   return (
     <div
       className="datajam-table-wrapper"
@@ -43,7 +46,9 @@ function DataJamTable(props: DataJamTableProps) {
             <div key={index} className="data-header">
               <div>{header.label}</div>
               {props.actions?.sortBy && (
-                <div>sort {/* TODO: replace with icon*/}</div>
+                <div onClick={() => toggleSort(header)}>
+                  sort {/* TODO: replace with icon*/}
+                </div>
               )}
             </div>
           ))}
