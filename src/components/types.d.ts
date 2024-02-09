@@ -12,4 +12,5 @@ interface DataJamTableProps {
   };
   columnHeaders?: ColumnHeader[];
   onToggleSort?: (header: ColumnHeader) => void;
+  onRowSelect?: (row: number | null) => void;
 }

@@ -14,6 +14,8 @@ function DataJamTable(props: DataJamTableProps) {
 
   const [tableData, setTableData] = useState<TableData>(data);
 
+  const [selectedRow, setSelectedRow] = useState<number | null>(null);
+
   useEffect(() => {
     if (actions?.searchBy) {
       setTableData(
@@ -67,6 +69,10 @@ function DataJamTable(props: DataJamTableProps) {
     }
   }
 
+  function handleRowClick(row: number) {
+    setSelectedRow(row);
+  }
+
   const defaultGridTemplateColumns = `repeat(${tableData.length}, 1fr)`;
 
   if (tableData.length === 0) {
@@ -102,7 +108,11 @@ function DataJamTable(props: DataJamTableProps) {
       )}
       {rows.map((row) =>
         columns.map((col) => (
-          <div key={`${row}-${col}`} className="data-cell">
+          <div
+            key={`${row}-${col}`}
+            className={`data-cell ${row === selectedRow ? "selected" : ""}`}
+            onClick={() => handleRowClick(row)}
+          >
             {tableData?.[row]?.[col] && <div>{tableData?.[row]?.[col]}</div>}
           </div>
         ))

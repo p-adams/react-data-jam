@@ -16,3 +16,7 @@
 .data-cell > div {
   padding: 10px;
 }
+
+.data-cell.selected {
+  outline: 1px solid blue;
+}
