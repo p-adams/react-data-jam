@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./DataJamTable.css";
 
 function DataJamTable(props: DataJamTableProps) {
@@ -12,17 +12,22 @@ function DataJamTable(props: DataJamTableProps) {
     [key: number]: SortDir;
   }>({});
 
-  const search = useMemo<TableData[]>(() => {
-    if (!actions?.searchBy) {
-      return data;
+  const [tableData, setTableData] = useState<TableData>(data);
+
+  useEffect(() => {
+    if (actions?.searchBy) {
+      setTableData(
+        data.filter((row) => {
+          return row.some((cell) => {
+            const cellString = cell.toString();
+            return cellString.includes(actions.searchBy);
+          });
+        })
+      );
+    } else {
+      setTableData(data);
     }
-    return data.filter((row) => {
-      return row.some((cell) => {
-        const cellString = cell.toString();
-        return cellString.includes(actions.searchBy);
-      });
-    });
-  }, [actions?.searchBy, data]);
+  }, [actions?.searchBy]);
 
   const [columns, rows] = useMemo(() => {
     const numColumns = data.length > 0 ? data[0].length : 0;
@@ -38,18 +43,33 @@ function DataJamTable(props: DataJamTableProps) {
       props.onToggleSort(header);
       return;
     }
-    // Toggle sort direction for the clicked column
+
+    // Find the index of the clicked column header
     const columnIndex = props.columnHeaders?.findIndex((col) => col === header);
     if (columnIndex !== -1 && columnIndex !== undefined) {
+      // Determine the sort direction for the clicked column
       const currentSortDirection = sortDirections[columnIndex];
       const newSortDirection = currentSortDirection === "ASC" ? "DESC" : "ASC";
+
+      // Sort the data array based on the clicked column and sort direction
+      const sortedData = [...tableData].sort((row1, row2) => {
+        const value1 = row1[columnIndex];
+        const value2 = row2[columnIndex];
+        if (value1 < value2) return newSortDirection === "ASC" ? -1 : 1;
+        if (value1 > value2) return newSortDirection === "ASC" ? 1 : -1;
+        return 0;
+      });
+
+      // Update the sort direction state for the clicked column
       setSortDirections({ ...sortDirections, [columnIndex]: newSortDirection });
+      // Update the data array with the sorted data
+      setTableData(sortedData);
     }
   }
 
-  const defaultGridTemplateColumns = `repeat(${search.length}, 1fr)`;
+  const defaultGridTemplateColumns = `repeat(${tableData.length}, 1fr)`;
 
-  if (search.length === 0) {
+  if (tableData.length === 0) {
     return <div>Not found</div>;
   }
 
@@ -83,7 +103,7 @@ function DataJamTable(props: DataJamTableProps) {
       {rows.map((row) =>
         columns.map((col) => (
           <div key={`${row}-${col}`} className="data-cell">
-            {search?.[row]?.[col] && <div>{search?.[row]?.[col]}</div>}
+            {tableData?.[row]?.[col] && <div>{tableData?.[row]?.[col]}</div>}
           </div>
         ))
       )}
