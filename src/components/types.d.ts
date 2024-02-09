@@ -6,7 +6,10 @@ type SortDir = "ASC" | "DESC";
 
 interface DataJamTableProps {
   data?: TableData;
-  actions?: { searchBy?: string; sortBy?: "ASC" | "DESC"; filterBy?: string };
+  actions?: {
+    searchBy?: string;
+    sortBy?: "ASC" | "DESC";
+  };
   columnHeaders?: ColumnHeader[];
   onToggleSort?: (header: ColumnHeader) => void;
 }

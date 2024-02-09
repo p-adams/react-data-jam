@@ -21,7 +21,10 @@ function BasicTableSearch(_props: DataJamTableProps) {
       />
       <BasicTable
         columnHeaders={[{ label: "A" }, { label: "B" }, { label: "C" }]}
-        actions={{ searchBy: searchValue, sortBy: sortBy }}
+        actions={{
+          searchBy: searchValue,
+          sortBy: sortBy,
+        }}
       />
     </>
   );

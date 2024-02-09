@@ -8,7 +8,6 @@ React Data Jam is a versatile data table component designed for displaying tabul
 - Filtering: Filter rows based on custom criteria to focus on relevant data.
 - Pagination: Navigate through large datasets with built-in pagination controls.
 - Row Selection: Select individual rows or multiple rows for further actions.
-- Customizable Column Rendering: Customize the appearance and behavior of columns to suit your needs.
 
 ### Installation (WIP)
 
