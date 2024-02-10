@@ -1,5 +1,6 @@
 import "./App.css";
 import BasicTable from "./examples/BasicTable";
+import BasicTablePaginatiion from "./examples/BasicTablePagination";
 import BasicTableSearch from "./examples/BasicTableSearch";
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
             <BasicTable
               columnHeaders={[{ label: "A" }, { label: "B" }, { label: "C" }]}
             />
+          </section>
+          <section className="demo-section">
+            <h3>Simple 300 x 3 Table W/Pagination </h3>
+            <BasicTablePaginatiion />
           </section>
         </section>
       </div>
