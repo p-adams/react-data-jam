@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-
-interface TablePaginationProps {
-  data: any[][];
-  itemsPerPage: number;
-  onPageChange: (page: number) => void;
-}
-
-const TablePagination = ({
-  data,
-  itemsPerPage,
-  onPageChange,
-}: TablePaginationProps) => {
+import "./TablePagination.css";
+const TablePagination = ({ data, itemsPerPage, onPageChange }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -27,9 +17,7 @@ const TablePagination = ({
             key={index + 1}
             className={currentPage === index + 1 ? "active" : ""}
           >
-            <a onClick={() => handleClick(index + 1)} href="!#">
-              {index + 1}
-            </a>
+            <div onClick={() => handleClick(index + 1)}>{index + 1}</div>
           </li>
         ))}
       </ul>

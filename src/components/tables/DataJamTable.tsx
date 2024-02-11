@@ -12,9 +12,12 @@ function DataJamTable(props: DataJamTableProps) {
     [key: number]: SortDir;
   }>({});
 
-  const [tableData, setTableData] = useState<TableData>(data);
-
+  const [tableData, setTableData] = useState<TableData>([]);
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
+
+  useEffect(() => {
+    setTableData(data);
+  }, [data]);
 
   useEffect(() => {
     if (actions?.searchBy) {

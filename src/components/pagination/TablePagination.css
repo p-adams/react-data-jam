@@ -1,0 +1,14 @@
+ul,
+li {
+  list-style: none;
+}
+
+.pagination {
+  display: flex;
+  gap: 22px;
+}
+
+.active {
+  color: blue;
+  font-weight: 500;
+}
